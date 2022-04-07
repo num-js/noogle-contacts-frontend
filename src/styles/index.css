@@ -1,0 +1,26 @@
+/* $theme-colors: (
+  "primary": #084d8a,
+  "danger": #f50057,
+  "success": #33691e,
+  "warning": #7c560a,
+  "lightnnn": white,
+  "numan": rgba(148, 218, 19, 0.877)
+); */
+
+/* // Bootstrap and its default variables */
+/* @import "~bootstrap/scss/bootstrap"; */
+
+:root {
+    --primary: #084d8a;
+    --danger: #f50057;
+    --success: #33691e;
+    --warning: #7c560a;
+}
+
+body {
+    padding-top: 3rem;
+}
+
+.nbg-primary {
+    background-color: var(--primary)
+}

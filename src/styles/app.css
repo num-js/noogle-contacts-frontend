@@ -1,0 +1,16 @@
+.actions {
+    opacity: 0;
+}
+
+tr:hover .actions {
+    opacity: 1;
+}
+
+.contactTable td {
+    padding: 15px;
+}
+
+/* Toased Message Position */
+.Toastify__toast-container--top-right {
+    top: 3.4em;
+}
