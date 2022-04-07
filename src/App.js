@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/app.css';
 
 //Importing Components
-import NavBar from './components/elements/NavBar';
+import NavBar from './components/SharedComponents/NavBar';
 import Contacts from './components/contacts/Contacts';
 
 import AddContact from './components/contacts/AddContact';
