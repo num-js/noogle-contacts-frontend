@@ -12,6 +12,7 @@ import Contacts from './components/contacts/Contacts';
 import AddContact from './components/contacts/AddContact';
 import EditContact from './components/contacts/EditContact';
 import ViewContact from './components/contacts/ViewContact';
+import { ADD_CONTACT, EDIT_CONTACT, INDEX, VIEW_CONTACT } from './utils/routerLinks';
 
 function App() {
 
@@ -84,26 +85,26 @@ function App() {
                             <br />
                             <div>
                                 <Switch>
-                                    <Route exact path="/">
+                                    <Route exact path={INDEX}>
                                         <Contacts
                                             allContacts={allContacts}
                                             removeDeletedContact={removeDeletedContact}
                                             allContactsLoadingAnim={allContactsLoadingAnim}
                                         />
                                     </Route>
-                                    <Route exact path="/contact/add">
+                                    <Route exact path={ADD_CONTACT}>
                                         <AddContact
                                             // allContacts={allContacts}
                                             appendNewCreatedContact={appendNewCreatedContact}
                                         />
                                     </Route>
-                                    <Route exact path="/contact/editContact/:id">
+                                    <Route exact path={`${EDIT_CONTACT}/:id`}>
                                         <EditContact
                                             allContacts={allContacts}
                                             modifyUpdatedContact={modifyUpdatedContact}
                                         />
                                     </Route>
-                                    <Route exact path="/viewContact/:id">
+                                    <Route exact path={`${VIEW_CONTACT}/:id`}>
                                         <ViewContact
                                             allContacts={allContacts}
                                         />
