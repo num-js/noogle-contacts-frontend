@@ -12,7 +12,8 @@ import Contacts from './components/contacts/Contacts';
 import AddContact from './components/contacts/AddContact';
 import EditContact from './components/contacts/EditContact';
 import ViewContact from './components/contacts/ViewContact';
-import { ADD_CONTACT, EDIT_CONTACT, INDEX, VIEW_CONTACT } from './utils/routerLinks';
+import { ADD_CONTACT, EDIT_CONTACT, INDEX, LOGIN, SIGNUP, VIEW_CONTACT } from './utils/routerLinks';
+import Login from './components/Auth/Login';
 
 function App() {
 
@@ -108,6 +109,12 @@ function App() {
                                         <ViewContact
                                             allContacts={allContacts}
                                         />
+                                    </Route>
+                                    <Route exact path={LOGIN}>
+                                        <Login />
+                                    </Route>
+                                    <Route exact path={SIGNUP}>
+                                        <Login />
                                     </Route>
                                 </Switch>
                             </div>
