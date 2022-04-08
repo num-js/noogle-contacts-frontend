@@ -14,6 +14,7 @@ import EditContact from './components/contacts/EditContact';
 import ViewContact from './components/contacts/ViewContact';
 import { ADD_CONTACT, EDIT_CONTACT, INDEX, LOGIN, SIGNUP, VIEW_CONTACT } from './utils/routerLinks';
 import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 
 function App() {
 
@@ -114,7 +115,7 @@ function App() {
                                         <Login />
                                     </Route>
                                     <Route exact path={SIGNUP}>
-                                        <Login />
+                                        <Signup />
                                     </Route>
                                 </Switch>
                             </div>

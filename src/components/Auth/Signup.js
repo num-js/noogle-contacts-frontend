@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { INDEX, SIGNUP } from '../../utils/routerLinks'
+import { INDEX, LOGIN, SIGNUP } from '../../utils/routerLinks'
 import './auth.css'
 
-const Login = () => {
+const Signup = () => {
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -14,28 +15,38 @@ const Login = () => {
                 <div className="col-sm-4 p-0" align="center">
                     <div className="card border-0 shadow">
                         <div className="card-header nbg-primary text-light">
-                            <b>Login</b>
+                            <b>Signup</b>
                         </div>
                         <div className="card-body">
                             <form>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email"
+                                    <input type="text" class="form-control" placeholder="Name" required
+                                        value={name}
+                                        onChange={(event) => setName(event.target.value)}
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" required
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password"
+                                    <input type="password" class="form-control" placeholder="Password" required
                                         value={password}
                                         onChange={(event) => setPassword(event.target.value)}
                                     />
                                 </div>
 
+
                                 <div class="form-group">
+                                    <p class="small mt-3">
+                                        By signing up, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                                    </p>
                                     <button type="submit" class="btn nbg-primary text-white"
                                         style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}
                                     >
-                                        <span className="text-left"> Login </span>
+                                        <span className="text-left"> Signup </span>
                                         <span className="text-right"> --&gt; </span>
                                     </button>
                                 </div>
@@ -46,8 +57,9 @@ const Login = () => {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <Link to={SIGNUP} style={{ textDecoration: 'none' }}>
-                                        Create New Account
+                                    Already have an Account,&nbsp;
+                                    <Link to={LOGIN} style={{ textDecoration: 'none' }}>
+                                        Login
                                     </Link>
                                 </div>
                             </form>
@@ -59,4 +71,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Signup;
