@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { authAPICall } from '../../utils/authAPICall';
+import { setCookie } from '../../utils/cookieHelper';
 import { INDEX, SIGNUP } from '../../utils/routerLinks'
 import './auth.css'
 
 const Login = () => {
+    const { push } = useHistory();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const loginHandler = async (event) => {
+        event.preventDefault();
+        const loginData = { email, password };
+        const response = await authAPICall('/signin', loginData);
+        console.log('response: ', response);
+        if (response?.error) {
+            return;
+        }
+        toast.success(response.message);
+        setCookie('auth-service-token', response.token);
+        push(INDEX);
+    }
 
     return (
         <>
@@ -17,7 +34,7 @@ const Login = () => {
                             <b>Login</b>
                         </div>
                         <div className="card-body">
-                            <form>
+                            <form onSubmit={loginHandler}>
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Email"
                                         value={email}

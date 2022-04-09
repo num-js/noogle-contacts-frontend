@@ -37,5 +37,5 @@ export const authAPICall = async (endpoint, data = null, method = "POST", endpoi
             toast.error(error.response.data.error);
             return error.response.data
         });
-    return response;
+    return response.data;
 }
