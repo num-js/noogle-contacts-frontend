@@ -5,26 +5,18 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import Avatar from '../SharedComponents/Avatar';
 import { EDIT_CONTACT, VIEW_CONTACT } from '../../utils/routerLinks';
+import { APICall } from '../../utils/APICall';
 
 const ContactComp = ({ singleContact: { _id, name, mobile_num, email }, removeDeletedContact }) => {
 
-    const deleteContact = (id) => {
-        const options = {
-            headers: {
-                "content-type": "application/json",
-            }
-        };
-        axios.delete(`${process.env.REACT_APP_API_URL}delete_contact/${id}`, options)
-            .then((res) => {
-                console.log(res);
-                // props.appendNewCreatedContact(res.data);
-                removeDeletedContact(res.data._id);
-                toast(`${res.data.name} - Contact Deleted`);
-            })
-            .catch(err => {
-                console.log('Failed to Delete Contact: ', err);
-                toast.error('Failed to Delete Contact, try again');
-            })
+    const deleteContact = async (id) => {
+        const response = await APICall(`/delete_contact/${id}`, 'DELETE');
+        console.log(response);
+        if (!response || response.error) {
+            return;
+        }
+        removeDeletedContact(response._id);
+        toast.success(`${response.name} - Contact Deleted`);
     }
 
     return (

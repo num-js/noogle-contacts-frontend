@@ -23,15 +23,21 @@ import { getCookie } from "./cookieHelper";
 export const APICall = async (endpoint, method = "POST", data = null, endpointPrefix = "/api") => {
     const API_URL = process.env.REACT_APP_API_URL + endpointPrefix + endpoint;
     const authServiceToken = getCookie(AUTH_SERVICE_TOKEN);
-    const config = {
+    let config = {
         method: method,
         url: API_URL,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': authServiceToken
-        },
-        data
+        }
     };
+
+    if (method !== "DELETE") {
+        console.clear();
+        console.log('adding data', data);
+
+        config.data = data;
+    }
 
     const response = await axios(config)
         .catch((error) => {

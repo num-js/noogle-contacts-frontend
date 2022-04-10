@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { APICall } from '../../utils/APICall';
 
 
-const AddContact = (props) => {
+const AddContact = ({ appendNewCreatedContact }) => {
 
     let history = useHistory();
 
@@ -14,14 +15,8 @@ const AddContact = (props) => {
     const [address, setAddress] = useState('');
     const [description, setDescription] = useState('');
 
-    const addNewContact = (e) => {
+    const addNewContact = async (e) => {
         e.preventDefault();
-
-        const options = {
-            headers: {
-                "content-type": "application/json",
-            }
-        };
         let newContactData = {
             name,
             mobile_num: number,
@@ -29,17 +24,13 @@ const AddContact = (props) => {
             address,
             description
         };
-        axios.post(`${process.env.REACT_APP_API_URL}create_contact/`, newContactData, options)
-            .then((res) => {
-                // console.log(res);
-                props.appendNewCreatedContact(res.data);
-                toast(`${res.data.name} - Contact created`);
-                history.push('/');
-            })
-            .catch(err => {
-                console.log(err);
-                toast.error('Failed to create Contact, try again');
-            })
+        const response = await APICall('/create_contact', 'POST', newContactData);
+        if (!response || response.error) {
+            return;
+        }
+        appendNewCreatedContact(response);
+        toast.success(`${response.name} - Contact created`);
+        history.push('/');
     }
 
     return (

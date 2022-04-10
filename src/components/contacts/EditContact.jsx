@@ -1,9 +1,10 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { APICall } from '../../utils/APICall';
+import { INDEX } from '../../utils/routerLinks';
 
-const EditContact = (props) => {
+const EditContact = ({ allContacts, modifyUpdatedContact }) => {
 
     let { id } = useParams();
     let history = useHistory();
@@ -14,14 +15,8 @@ const EditContact = (props) => {
     const [address, setAddress] = useState('');
     const [description, setDescription] = useState('');
 
-    const updateContact = (e) => {
+    const updateContact = async (e) => {
         e.preventDefault();
-
-        const options = {
-            headers: {
-                "content-type": "application/json",
-            }
-        };
         let updateContactData = {
             name,
             mobile_num: number,
@@ -29,25 +24,19 @@ const EditContact = (props) => {
             address,
             description
         };
-        // console.log('updateContactData', updateContactData);
-        axios.patch(`${process.env.REACT_APP_API_URL}update_contact/${id}`, updateContactData, options)
-            .then((res) => {
-                console.log(res);
-                props.modifyUpdatedContact(res.data);
-                toast(`${res.data.name} - Contact Updated`);
-                history.push('/');
-            })
-            .catch(err => {
-                console.log('Failed to Update Contact: ', err);
-                toast.error('Failed to Update Contact, try again');
-            })
+
+        const response = await APICall(`/update_contact/${id}`, 'PATCH', updateContactData);
+        if (!response || response.error) {
+            return;
+        }
+        modifyUpdatedContact(response);
+        toast.success(`${response.name} - Contact Updated`);
+        history.push(INDEX);
     }
 
     useEffect(() => {
         if (id != null) {
-            const specificContactData = props.allContacts.filter(singleContact => singleContact._id === id);
-            console.log('specificContactData', specificContactData);
-
+            const specificContactData = allContacts?.filter(singleContact => singleContact._id === id);
             if (specificContactData.length <= 0) {
                 toast.error('Contact not Found');
                 history.push('/');
