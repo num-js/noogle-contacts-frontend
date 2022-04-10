@@ -57,6 +57,15 @@ function App() {
         // });
     }
 
+    const fetchAllContacts = async () => {
+        const response = await APICall('/get_contacts', 'GET');
+        setAllContactsLoadingAnim(false);
+        if (!response || response?.error) {
+            return;
+        }
+        setAllContacts(response);
+    }
+
     useEffect(() => {
         if (getCookie(AUTH_SERVICE_TOKEN)) {
             setIsAuthenticated(true);
