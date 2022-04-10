@@ -24,6 +24,8 @@ function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [allContacts, setAllContacts] = useState([]);
     const [allContactsLoadingAnim, setAllContactsLoadingAnim] = useState(true);
+    const [searchContact, setSearchContact] = useState('');
+
 
     const appendNewCreatedContact = (newContactData) => {
         setAllContacts([...allContacts, newContactData])
@@ -81,7 +83,7 @@ function App() {
         <>
             <>
                 <div className="App">
-                    <NavBar />
+                    <NavBar setSearchContact={setSearchContact} searchContact={searchContact} />
                     <ToastContainer
                         position="top-right"
                         autoClose={5000}
@@ -103,6 +105,7 @@ function App() {
                                             allContacts={allContacts}
                                             removeDeletedContact={removeDeletedContact}
                                             allContactsLoadingAnim={allContactsLoadingAnim}
+                                            searchContact={searchContact}
                                         />
                                     </Route>
                                     <Route exact path={ADD_CONTACT}>

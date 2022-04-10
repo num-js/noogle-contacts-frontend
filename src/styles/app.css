@@ -14,3 +14,22 @@ tr:hover .actions {
 .Toastify__toast-container--top-right {
     top: 3.4em;
 }
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1)
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    color: white;
+}
+
+.search button {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    height: 34px;
+}

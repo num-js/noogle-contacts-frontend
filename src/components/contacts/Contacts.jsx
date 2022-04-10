@@ -1,7 +1,7 @@
 import React from 'react'
 import ContactComp from './ContactComp';
 
-const Contacts = ({ allContacts, removeDeletedContact, allContactsLoadingAnim }) => {
+const Contacts = ({ allContacts, removeDeletedContact, allContactsLoadingAnim, searchContact }) => {
     return (
         <div>
             <div align="center">
@@ -18,7 +18,7 @@ const Contacts = ({ allContacts, removeDeletedContact, allContactsLoadingAnim })
                         </thead>
                         <tbody>
                             {
-                                allContacts?.map((singleContact) => (
+                                allContacts?.filter((contact) => (contact.name.toLowerCase().includes(searchContact))).map((singleContact) => (
                                     <ContactComp
                                         singleContact={singleContact}
                                         key={singleContact._id}
@@ -34,7 +34,6 @@ const Contacts = ({ allContacts, removeDeletedContact, allContactsLoadingAnim })
                         )
                     }
 
-                    {console.log(allContacts)}
                     {
                         !allContactsLoadingAnim && allContacts.length === 0 && (
                             <div className="text-danger font-weight-bold">No Contact Created Yet</div>
