@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { authAPICall } from '../../utils/authAPICall';
 import { LOGIN } from '../../utils/routerLinks'
 import './auth.css'
@@ -15,9 +16,10 @@ const Signup = () => {
         const signupData = { name, email, password };
         const response = await authAPICall('/signup', signupData);
         console.log('response: ', response);
-        if (response?.error) {
+        if (!response || response?.error) {
             return;
         }
+        toast.success(response.message);
         push(LOGIN);
     }
 

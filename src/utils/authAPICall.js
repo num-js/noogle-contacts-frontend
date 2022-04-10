@@ -11,7 +11,6 @@
 
 import axios from "axios";
 import { toast } from "react-toastify";
-// import { getCookie } from "./cookieHelper";
 
 /**
  * Fetch Data from the API & return Response

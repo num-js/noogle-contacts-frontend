@@ -9,6 +9,7 @@
 
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AUTH_SERVICE_TOKEN } from "./constants";
 import { getCookie } from "./cookieHelper";
 
 /**
@@ -19,7 +20,7 @@ import { getCookie } from "./cookieHelper";
  * @param {String} endpointPrefix - EndPoint Prefix. default - '/api'
  * @returns - {Object} - API response
  */
-export const APICall = async (endpoint, data = null, method = "POST", endpointPrefix = "/api") => {
+export const APICall = async (endpoint, method = "POST", data = null, endpointPrefix = "/api") => {
     const API_URL = process.env.REACT_APP_API_URL + endpointPrefix + endpoint;
     const authServiceToken = getCookie(AUTH_SERVICE_TOKEN);
     const config = {

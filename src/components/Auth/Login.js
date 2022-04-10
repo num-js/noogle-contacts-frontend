@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authAPICall } from '../../utils/authAPICall';
+import { AUTH_SERVICE_TOKEN } from '../../utils/constants';
 import { setCookie } from '../../utils/cookieHelper';
 import { INDEX, SIGNUP } from '../../utils/routerLinks'
 import './auth.css'
@@ -17,11 +18,11 @@ const Login = () => {
         const loginData = { email, password };
         const response = await authAPICall('/signin', loginData);
         console.log('response: ', response);
-        if (response?.error) {
+        if (!response || response?.error) {
             return;
         }
         toast.success(response.message);
-        setCookie('auth-service-token', response.token);
+        setCookie(AUTH_SERVICE_TOKEN, response.token);
         push(INDEX);
     }
 
