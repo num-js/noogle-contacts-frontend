@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/app.css';
@@ -15,9 +15,13 @@ import ViewContact from './components/contacts/ViewContact';
 import { ADD_CONTACT, EDIT_CONTACT, INDEX, LOGIN, SIGNUP, VIEW_CONTACT } from './utils/routerLinks';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
+import { getCookie } from './utils/cookieHelper';
+import { AUTH_SERVICE_TOKEN } from './utils/constants';
+import { APICall } from './utils/APICall';
 
 function App() {
-
+    const history = useHistory();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [allContacts, setAllContacts] = useState([]);
     const [allContactsLoadingAnim, setAllContactsLoadingAnim] = useState(true);
 
@@ -54,21 +58,19 @@ function App() {
     }
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}get_contacts/`)
-            .then(res => res.json())
-            .then(data => {
-                setAllContacts(data);
-                // console.log('data', data);
-            })
-            .catch(err => console.log('error occured while fetching All Contacts Data. ', err))
-            .then(() => {
-                setAllContactsLoadingAnim(false)
-            })
+        if (getCookie(AUTH_SERVICE_TOKEN)) {
+            setIsAuthenticated(true);
+            fetchAllContacts();
+            history.push(INDEX);
+        } else {
+            toast.warning('Plase Login first.');
+            history.push(LOGIN);
+        }
     }, []);
 
     return (
         <>
-            <Router>
+            <>
                 <div className="App">
                     <NavBar />
                     <ToastContainer
@@ -96,7 +98,6 @@ function App() {
                                     </Route>
                                     <Route exact path={ADD_CONTACT}>
                                         <AddContact
-                                            // allContacts={allContacts}
                                             appendNewCreatedContact={appendNewCreatedContact}
                                         />
                                     </Route>
@@ -122,7 +123,7 @@ function App() {
                         </div>
                     </div>
                 </div>
-            </Router>
+            </>
         </>
     );
 }
