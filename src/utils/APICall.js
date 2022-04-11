@@ -20,7 +20,7 @@ import { getCookie } from "./cookieHelper";
  * @param {String} endpointPrefix - EndPoint Prefix. default - '/api'
  * @returns - {Object} - API response
  */
-export const APICall = async (endpoint, method = "POST", data = null, endpointPrefix = "/api") => {
+export const APICall = async (endpoint, method = "POST", data = null, endpointPrefix = "/api/v2") => {
     const API_URL = process.env.REACT_APP_API_URL + endpointPrefix + endpoint;
     const authServiceToken = getCookie(AUTH_SERVICE_TOKEN);
     let config = {
@@ -33,9 +33,6 @@ export const APICall = async (endpoint, method = "POST", data = null, endpointPr
     };
 
     if (method !== "DELETE") {
-        console.clear();
-        console.log('adding data', data);
-
         config.data = data;
     }
 

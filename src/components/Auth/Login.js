@@ -17,7 +17,6 @@ const Login = () => {
         event.preventDefault();
         const loginData = { email, password };
         const response = await authAPICall('/signin', loginData);
-        console.log('response: ', response);
         if (!response || response?.error) {
             return;
         }

@@ -11,7 +11,6 @@ const ContactComp = ({ singleContact: { _id, name, mobile_num, email }, removeDe
 
     const deleteContact = async (id) => {
         const response = await APICall(`/delete_contact/${id}`, 'DELETE');
-        console.log(response);
         if (!response || response.error) {
             return;
         }

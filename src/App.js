@@ -37,11 +37,8 @@ function App() {
     }
 
     const modifyUpdatedContact = (updatedContactData) => {
-        // console.log('updatedContactData', updatedContactData);
-
         allContacts.map((singleContact, index) => {
             if (updatedContactData._id === singleContact._id) {
-                console.log('singleContact.name ', singleContact.name);
                 singleContact.name = updatedContactData.name
                 singleContact.number = updatedContactData.mobile_num
                 singleContact.email = updatedContactData.email
@@ -49,14 +46,6 @@ function App() {
                 singleContact.description = updatedContactData.description
             }
         })
-
-        // setAllContacts(modifiedContactData);
-
-        // const updatedMeetingsData = this.state.meetingsData.map((meeting) => {
-        //     if (res.data._id === meeting._id) {
-        //         meeting.meeting_pin = res.data.meeting_pin;
-        //     }
-        // });
     }
 
     const fetchAllContacts = async () => {
