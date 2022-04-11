@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { APICall } from '../../utils/APICall';
 

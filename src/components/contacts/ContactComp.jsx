@@ -1,7 +1,5 @@
 import React from 'react';
-// import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import Avatar from '../SharedComponents/Avatar';
 import { EDIT_CONTACT, VIEW_CONTACT } from '../../utils/routerLinks';
