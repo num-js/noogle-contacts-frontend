@@ -13,13 +13,13 @@ const NavBar = ({ searchContact, setSearchContact }) => {
                         </div>
                     </Link>
                     <div>
-                        <div class="d-flex justify-content-center align-items-center" style={{}}>
-                            <div class="search">
-                                <input type="text" class="form-control" placeholder="Search"
+                        <div className="d-flex justify-content-center align-items-center" style={{}}>
+                            <div className="search">
+                                <input type="text" className="form-control" placeholder="Search"
                                     value={searchContact}
                                     onChange={(event) => setSearchContact(event.target.value)}
                                 />
-                                <button class="btn nbg-primary"><i class="fa fa-search"></i>N</button>
+                                <button className="btn nbg-primary"><i className="fa fa-search"></i>N</button>
                             </div>
                         </div>
                     </div>

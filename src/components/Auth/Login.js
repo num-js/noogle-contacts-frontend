@@ -35,34 +35,34 @@ const Login = () => {
                         </div>
                         <div className="card-body">
                             <form onSubmit={loginHandler}>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email"
+                                <div className="form-group">
+                                    <input type="email" className="form-control" placeholder="Email"
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password"
+                                <div className="form-group">
+                                    <input type="password" className="form-control" placeholder="Password"
                                         value={password}
                                         onChange={(event) => setPassword(event.target.value)}
                                     />
                                 </div>
 
-                                <div class="form-group">
-                                    <button type="submit" class="btn nbg-primary text-white"
+                                <div className="form-group">
+                                    <button type="submit" className="btn nbg-primary text-white"
                                         style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}
                                     >
                                         <span className="text-left"> Login </span>
                                         <span className="text-right"> --&gt; </span>
                                     </button>
                                 </div>
-                                <div class="col-md-12 ">
-                                    <div class="login-or">
-                                        <hr class="hr-or" />
-                                        <span class="span-or">or</span>
+                                <div className="col-md-12 ">
+                                    <div className="login-or">
+                                        <hr className="hr-or" />
+                                        <span className="span-or">or</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <Link to={SIGNUP} style={{ textDecoration: 'none' }}>
                                         Create New Account
                                     </Link>

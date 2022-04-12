@@ -32,44 +32,44 @@ const Signup = () => {
                         </div>
                         <div className="card-body">
                             <form onSubmit={signupHandler}>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name" required
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="Name" required
                                         value={name}
                                         onChange={(event) => setName(event.target.value)}
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" required
+                                <div className="form-group">
+                                    <input type="email" className="form-control" placeholder="Email" required
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" required
+                                <div className="form-group">
+                                    <input type="password" className="form-control" placeholder="Password" required
                                         value={password}
                                         onChange={(event) => setPassword(event.target.value)}
                                     />
                                 </div>
 
 
-                                <div class="form-group">
-                                    <p class="small mt-3">
-                                        By signing up, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                                <div className="form-group">
+                                    <p className="small mt-3">
+                                        By signing up, you are indicating that you have read and agree to the <a href="#" className="">Terms of Use</a> and <a href="#">Privacy Policy</a>.
                                     </p>
-                                    <button type="submit" class="btn nbg-primary text-white"
+                                    <button type="submit" className="btn nbg-primary text-white"
                                         style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}
                                     >
                                         <span className="text-left"> Signup </span>
                                         <span className="text-right"> --&gt; </span>
                                     </button>
                                 </div>
-                                <div class="col-md-12 ">
-                                    <div class="login-or">
-                                        <hr class="hr-or" />
-                                        <span class="span-or">or</span>
+                                <div className="col-md-12 ">
+                                    <div className="login-or">
+                                        <hr className="hr-or" />
+                                        <span className="span-or">or</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     Already have an Account,&nbsp;
                                     <Link to={LOGIN} style={{ textDecoration: 'none' }}>
                                         Login
