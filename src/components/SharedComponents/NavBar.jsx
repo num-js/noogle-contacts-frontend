@@ -13,7 +13,7 @@ const NavBar = ({ searchContact, setSearchContact }) => {
                         </div>
                     </Link>
                     <div>
-                        <div className="d-flex justify-content-center align-items-center" style={{}}>
+                        <div className="d-lg-flex d-none justify-content-center align-items-center">
                             <div className="search">
                                 <input type="text" className="form-control" placeholder="Search"
                                     value={searchContact}
