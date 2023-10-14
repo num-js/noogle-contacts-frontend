@@ -1,10 +1,10 @@
 /*
- * Filename:  cookieHelper.js
- * Created Date: Friday, April 8th 2022, 4:59:14 pm
- * Author: Numan Ahmed
+ * Filename: cookieHelper.js
+ * Created Date: Saturday, December 31st 2022, 9:33:46 pm
+ * Author: Md. Numan Ahmed
  * Description: Set Cookie value & get Cookie value
  * Developed with ❤️
- * Copyright (c) Numan
+ * Copyright (c) 2022 N_Ah
  */
 
 
